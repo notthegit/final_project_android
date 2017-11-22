@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="notthegit.commander.kmitl.commander.Stage1"
+    android:weightSum="10"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/info"
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="7"
+        android:background="@android:color/holo_blue_light">
+        <TextView
+            android:id="@+id/player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player : " />
+        <TextView
+            android:id="@+id/radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Radio : Several squads are under sniper fire request fire support now!"/>
+        <TextView
+            android:id="@+id/napalm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Napalm : 1" />
+        <Button
+            android:id="@+id/endTurn_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="End Turn"
+            android:onClick="clickEndTurn"/>
+        <Button
+            android:id="@+id/menu_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menu"
+            android:onClick="clickMenu"/>
+
+        <Button
+            android:id="@+id/next_level_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clickNext"
+            android:text="Next Level"
+            android:visibility="gone" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/stage1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="3"
+        android:background="@android:color/holo_blue_light">
+    </LinearLayout>
+</LinearLayout>
