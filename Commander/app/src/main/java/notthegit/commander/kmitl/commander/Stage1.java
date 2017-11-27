@@ -15,13 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class Stage1 extends AppCompatActivity {
-    final static int mapWidth = 5, mapHeight = 4;
+    final static int mapsize = 5;
     private int turn = 0;
     private boolean pass = false, blue_on_blue = false;
     private TextView radio, napalm;
     private Context context;
-    private ImageView[][] ivCell = new ImageView[mapHeight][mapWidth];
-    private Drawable[] drawCell = new Drawable[4];
+    private ImageView[][] ivCell = new ImageView[mapsize][mapsize];
+    private Drawable[] drawCell = new Drawable[6];
     private int shot = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,25 +36,30 @@ public class Stage1 extends AppCompatActivity {
         drawCell[1] = context.getResources().getDrawable(R.drawable.forest);
         drawCell[2] = context.getResources().getDrawable(R.drawable.plain);
         drawCell[3] = context.getResources().getDrawable(R.drawable.ash);
+        drawCell[4] = context.getResources().getDrawable(R.drawable.riverew);
+        drawCell[5] = context.getResources().getDrawable(R.drawable.ashriverew);
     }
     @SuppressLint("NewApi")
     private void design_Battlefield(){
-        int sizeofCell = Math.round((ScreenWidth() / 9));
-        LinearLayout.LayoutParams lpRow = new LinearLayout.LayoutParams(sizeofCell * mapWidth, sizeofCell);
+        int sizeofCell = Math.round((ScreenWidth() / mapsize));
+        LinearLayout.LayoutParams lpRow = new LinearLayout.LayoutParams(sizeofCell * mapsize, sizeofCell);
         LinearLayout.LayoutParams lpCell = new LinearLayout.LayoutParams(sizeofCell, sizeofCell);
 
         LinearLayout linBoardGame = (LinearLayout) findViewById(R.id.stage1);
         napalm = findViewById(R.id.napalm);
 
-        for (int i = 0; i < mapHeight; i++) {
+        for (int i = 0; i < mapsize; i++) {
             LinearLayout linRow = new LinearLayout(context);
-            for (int j = 0; j < mapWidth; j++) {
+            for (int j = 0; j < mapsize; j++) {
                 ivCell[i][j] = new ImageView(context);
                 if ((i == 1 && j == 2) || (i == 3 && j == 4)){
                     ivCell[i][j].setBackground(drawCell[1]);
                 }
                 else if((i == 0 && j == 0) || (i == 1 && j == 1)|| (i == 2 && j == 4)){
                     ivCell[i][j].setBackground(drawCell[0]);
+                }
+                else if(i == 4){
+                    ivCell[i][j].setBackground(drawCell[4]);
                 }
                 else{
                     ivCell[i][j].setBackground(drawCell[2]);}
@@ -71,7 +76,11 @@ public class Stage1 extends AppCompatActivity {
                                     || (x == 0 && y == 0)){
                                 blue_on_blue = true;
                             }
-                            ivCell[x][y].setBackground(drawCell[3]);
+                            if(x == 4) {
+                                ivCell[x][y].setBackground(drawCell[5]);
+                            }else{
+                                ivCell[x][y].setBackground(drawCell[3]);
+                            }
                         }
                         shot--;
                         napalm.setText("Napalm : 0");
@@ -97,7 +106,7 @@ public class Stage1 extends AppCompatActivity {
         napalm = findViewById(R.id.napalm);
         turn++;
         if (pass){
-            radio.setText("Sniper cooked. Continue reconnaissance.");
+            radio.setText("Sniper cooked sir. Continue reconnaissance.");
             endTurn.setVisibility(View.GONE);
             Button next = findViewById(R.id.next_level_btn);
             next.setVisibility(View.VISIBLE);
@@ -113,20 +122,20 @@ public class Stage1 extends AppCompatActivity {
             endTurn.setVisibility(View.GONE);
         }
         else if (turn == 2){
-            radio.setText("Yankee Squad : Alfa Squad wipeout!. We are all left.");
+            radio.setText("Yankee squad : Sir Alfa squad wipeout!. We are all left.");
             ivCell[2][4].setBackground(drawCell[2]);
             napalm.setText("Napalm : 1");
             shot++;
         }
         else if (turn == 1){
-            radio.setText("Hotel Squad : Foxtrot Squad wipeout!");
+            radio.setText("Hotel squad : Sir Foxtrot squad wipeout!");
             ivCell[1][1].setBackground(drawCell[2]);
             napalm.setText("Napalm : 1");
             shot++;
         }
     }
     public void clickNext(View view){
-        Intent level = new Intent(this,MainActivity.class);
+        Intent level = new Intent(this,Stage2.class);
         startActivity(level);
     }
 }
