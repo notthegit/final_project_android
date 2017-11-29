@@ -4,13 +4,20 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONObject;
+
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     LoginButton loginButton;
@@ -22,7 +29,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         loginButton = findViewById(R.id.login_button);
-        loginButton.setReadPermissions("email");
+        //loginButton.setReadPermissions("email");
+        loginButton.setReadPermissions(Arrays.asList("name", "email"));
+
+
 
         callbackManager = CallbackManager.Factory.create();
 
@@ -30,7 +40,21 @@ public class MainActivity extends AppCompatActivity {
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                        // App code
+                        //GraphRequest request = GraphRequest.newMeRequest(
+                        //        loginResult.getAccessToken(),
+                        //        new GraphRequest.GraphJSONObjectCallback() {
+                        //            @Override
+                        //            public void onCompleted(JSONObject object, GraphResponse response) {
+
+                                        // Application code
+                        //                String email = object.getString("email");
+                        //                String birthday = object.getString("birthday"); // 01/31/1980 format
+                        //            }
+                        //        });
+                        //Bundle parameters = new Bundle();
+                        //parameters.putString("fields", "name,email");
+                        //request.setParameters(parameters);
+                        //request.executeAsync();
                     }
 
                     @Override
@@ -53,6 +77,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void clickLevel(View view){
         Intent level = new Intent(this,Stage1.class);
+        startActivity(level);
+    }
+    public void clickHelp(View view){
+        Intent level = new Intent(this,HelpActivity.class);
         startActivity(level);
     }
     @Override
