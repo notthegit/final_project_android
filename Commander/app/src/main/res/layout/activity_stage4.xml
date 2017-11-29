@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="notthegit.commander.kmitl.commander.Stage3">
+    tools:context="notthegit.commander.kmitl.commander.Stage4">
     <LinearLayout
         android:id="@+id/info"
         android:layout_width="match_parent"
@@ -21,12 +21,12 @@
             android:id="@+id/radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HQ : Your object is to help our recon destroy enemy AA"/>
+            android:text="Tango 6 : We are in position and ready to call in arty sir."/>
         <TextView
             android:id="@+id/napalm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CAS : 1" />
+            android:text="Arty : 1" />
         <Button
             android:id="@+id/endTurn_btn"
             android:layout_width="match_parent"
@@ -44,10 +44,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="clickNext"
-            android:text="Next Level"
+            android:text="The End"
             android:visibility="gone" />
         <LinearLayout
-            android:id="@+id/stage3"
+            android:id="@+id/stage4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"

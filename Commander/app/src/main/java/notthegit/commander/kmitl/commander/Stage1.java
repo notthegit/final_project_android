@@ -112,7 +112,6 @@ public class Stage1 extends AppCompatActivity {
             next.setVisibility(View.VISIBLE);
         }
         else if (blue_on_blue){
-            //radio.setText("Commissar : Traitor BLAM!");
             radio.setText("Commissar : You're fired from life BLAM!");
             endTurn.setVisibility(View.GONE);
         }
