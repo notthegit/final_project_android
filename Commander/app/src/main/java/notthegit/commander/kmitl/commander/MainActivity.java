@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         loginButton = findViewById(R.id.login_button);
-        //loginButton.setReadPermissions("email");
-        loginButton.setReadPermissions(Arrays.asList("name", "email"));
+        loginButton.setReadPermissions("email");
+        //loginButton.setReadPermissions(Arrays.asList("name", "email"));
 
 
 
