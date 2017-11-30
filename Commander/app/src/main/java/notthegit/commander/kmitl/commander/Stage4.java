@@ -92,7 +92,6 @@ public class Stage4 extends AppCompatActivity {
                     public void onClick(View v) {
                         if(shot == 1){
                             if(x == 2 && y == 0){
-                                ivCell[x][y].setBackground(drawCell[2]);
                                 blue_on_blue = true;
                             }
                             else if (x == 2 && y == 3){
@@ -169,6 +168,12 @@ public class Stage4 extends AppCompatActivity {
             shot--;
             napalm.setText("Arty : 0");
         }
+        else if (blue_on_blue){
+            radio.setText("Commissar : Arty cannon await you after this!");
+            shot--;
+            napalm.setText("Arty : 0");
+            endTurn.setVisibility(View.GONE);
+        }
         else if (turn == 1){
             radio.setText("Tango 6 : I think there are snipers in the wood sir.");
         }
@@ -191,12 +196,6 @@ public class Stage4 extends AppCompatActivity {
         else if (aa[0]+aa[1]+aa[2] == 0 && aa_destroy == 0){
             radio.setText("Tango 6 : All AA have been destroy.Request naplam on forest sir.");
             aa_destroy++;
-        }
-        else if (blue_on_blue){
-            radio.setText("Commissar : Arty cannon await you after this!");
-            shot--;
-            napalm.setText("Arty : 0");
-            endTurn.setVisibility(View.GONE);
         }
     }
     public void clickNext(View view){
