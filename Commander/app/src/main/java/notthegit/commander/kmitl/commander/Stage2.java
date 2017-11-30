@@ -161,6 +161,16 @@ public class Stage2 extends AppCompatActivity {
             ivCell[3][1].setBackground(drawCell[2]);
             ivCell[3][2].setBackground(drawCell[2]);
         }
+        else if (!bridge_destroy && turn == 1){
+            radio.setText("HQ : Tank are crossing the bridge.\n Mission Fail.");
+            endTurn.setVisibility(View.GONE);
+            shot--;
+            napalm.setText("CAS : 0");
+            ivCell[2][4].setBackground(drawCell[6]);
+            ivCell[2][3].setBackground(drawCell[6]);
+            ivCell[2][2].setBackground(drawCell[6]);
+            ivCell[2][1].setBackground(drawCell[1]);
+        }
         else if (bridge_destroy && turn == 1){
             radio.setText("HQ : Infantry try to cross the river. Bridging try to repair the bridge. Stop them.");
             ivCell[3][1].setBackground(drawCell[7]);
