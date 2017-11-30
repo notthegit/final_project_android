@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -51,6 +52,7 @@ public class Stage2 extends AppCompatActivity {
 
         LinearLayout linBoardGame = (LinearLayout) findViewById(R.id.stage2);
         napalm = findViewById(R.id.napalm);
+        final MediaPlayer cas_sound = MediaPlayer.create(this, R.raw.cassound);
 
         for (int i = 0; i < mapsize; i++) {
             LinearLayout linRow = new LinearLayout(context);
@@ -117,9 +119,11 @@ public class Stage2 extends AppCompatActivity {
                             else{
                                 ivCell[x][y].setBackground(drawCell[2]);
                             }
+                            cas_sound.start();
+                            shot--;
+                            napalm.setText("CAS : 0");
                         }
-                        shot--;
-                        napalm.setText("CAS : 0");
+
                     }
                 });
                 linRow.addView(ivCell[i][j], lpCell);

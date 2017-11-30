@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -53,6 +54,7 @@ public class Stage4 extends AppCompatActivity {
 
         LinearLayout linBoardGame = (LinearLayout) findViewById(R.id.stage4);
         napalm = findViewById(R.id.napalm);
+        final MediaPlayer arty_sound = MediaPlayer.create(this, R.raw.artysound);
 
         for (int i = 0; i < mapsize; i++) {
             LinearLayout linRow = new LinearLayout(context);
@@ -121,9 +123,10 @@ public class Stage4 extends AppCompatActivity {
                             else{
                                 ivCell[x][y].setBackground(drawCell[2]);
                             }
+                            arty_sound.start();
+                            shot--;
+                            napalm.setText("Arty : 0");
                         }
-                        shot--;
-                        napalm.setText("Arty : 0");
                     }
                 });
                 linRow.addView(ivCell[i][j], lpCell);
@@ -178,6 +181,8 @@ public class Stage4 extends AppCompatActivity {
             radio.setText("Tango 6 : I think there are snipers in the wood sir.");
         }
         else if (turn == 6 && !mortar_kill){
+            final MediaPlayer arty_sound = MediaPlayer.create(this, R.raw.artysound);
+            arty_sound.start();
             radio.setText("HQ : Random mortar round kill our artillery_observationer\n Mission Fail");
             ivCell[2][0].setBackground(drawCell[2]);
             endTurn.setVisibility(View.GONE);
@@ -185,9 +190,11 @@ public class Stage4 extends AppCompatActivity {
             napalm.setText("Arty : 0");
         }
         else if (turn == 7){
-            radio.setText("Hotel 9 : We only  have 3 round left. Make it count.");
+            radio.setText("Hotel 9 : We only have 3 round left. Make it count.");
         }
         else if (aa_destroy == 1){
+            final MediaPlayer napalm_sound = MediaPlayer.create(this, R.raw.napalmsound);
+            napalm_sound.start();
             radio.setText("Tango 6 : Damm I heard sniper scream while being burn alive.");
             aa_destroy++;
             ivCell[3][1].setBackground(drawCell[5]);

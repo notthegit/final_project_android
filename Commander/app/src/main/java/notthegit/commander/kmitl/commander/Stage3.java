@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -50,6 +51,7 @@ public class Stage3 extends AppCompatActivity {
 
         LinearLayout linBoardGame = (LinearLayout) findViewById(R.id.stage3);
         napalm = findViewById(R.id.napalm);
+        final MediaPlayer cas_sound = MediaPlayer.create(this, R.raw.cassound);
 
         for (int i = 0; i < mapsize; i++) {
             LinearLayout linRow = new LinearLayout(context);
@@ -90,9 +92,10 @@ public class Stage3 extends AppCompatActivity {
                                 blue_on_blue = true;
                                 ivCell[x][y].setBackground(drawCell[1]);
                             }
+                            cas_sound.start();
+                            shot--;
+                            napalm.setText("CAS : 0");
                         }
-                        shot--;
-                        napalm.setText("CAS : 0");
                     }
                 });
                 linRow.addView(ivCell[i][j], lpCell);
@@ -150,6 +153,8 @@ public class Stage3 extends AppCompatActivity {
             ivCell[1][4].setBackground(drawCell[6]);
         }
         else if (!tank_destroy && turn == 2){
+            final MediaPlayer tank_sound = MediaPlayer.create(this, R.raw.tanksound);
+            tank_sound.start();
             radio.setText("HQ : Tank ambush and destroy our scout\n Mission Fail.");
             ivCell[2][2].setBackground(drawCell[1]);
             ivCell[4][2].setBackground(drawCell[3]);
@@ -159,6 +164,8 @@ public class Stage3 extends AppCompatActivity {
         }
         else if (!artillery_observationer_destroy && turn == 3){
             radio.setText("HQ : Enemy arty score direct hit on recon\n Mission Fail.");
+            final MediaPlayer arty_sound = MediaPlayer.create(this, R.raw.artysound);
+            arty_sound.start();
             shot--;
             napalm.setText("CAS : 0");
             ivCell[2][3].setBackground(drawCell[1]);
